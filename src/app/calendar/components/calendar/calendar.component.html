@@ -1,0 +1,19 @@
+<div class="calendar-container">
+  <app-calendar-header></app-calendar-header>
+  <div class="calendar">
+    <div class="weekdays">
+      <div class="weekday" *ngFor="let weekday of weekdays; index as i;">
+        <div class="weekday-title">
+          <div>{{ weekday }}</div>
+          <div #dateEl>{{ chosenDate$ | async | calculateDate:i }}</div>
+        </div>
+        <div class="hour" *ngFor="let hour of hoursInDay" (click)="createNewEvent(dateEl.innerText, hour)">
+          <span>{{ hour }}:00</span>
+          <div class="event">
+            {{ dateHasEvent(dateEl.innerText, hour) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

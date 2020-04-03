@@ -1,8 +1,16 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@calendar/*": [
+        "app/calendar/*"
+      ],
+      "@app-state": [
+        "app/app-state.ts"
+      ]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

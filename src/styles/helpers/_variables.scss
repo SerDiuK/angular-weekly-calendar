@@ -1,0 +1,51 @@
+/* Colors */
+
+$black: #000;
+$white: #fff;
+
+$grey-900: #212121;
+$grey-800: #3C3C3C;
+$grey-700: #545752;
+$grey-600: #888B8D;
+$grey:     #999999;
+$grey-400: #CCCCCC;
+$grey-300: #EEEEEE;
+$grey-200: #F5F5F5;
+$grey-100: #FAFAFA;
+
+$arsenic: #39304A;
+$madder-lake: #CB333B;
+$green: #69AF23;
+$fluorescent-orange: #FFC300;
+
+$primary: $arsenic;
+$success: $green;
+$warning: $fluorescent-orange;
+$danger: $madder-lake;
+
+/** Fonts */
+
+$font-sans-serif: "Roboto", Arial, Helvetica, sans-serif !default;
+
+/** Font Weight */
+
+$weight-light: 300 !default;
+$weight-regular: 400 !default;
+$weight-bold: 700 !default;
+
+/** Shadows */
+
+$shadow-light: 0 2px 16px 2px rgba(127, 133, 139, 0.12);
+$shadow-heavy: 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.06), 0 11px 15px -7px rgba(0, 0, 0, 0.1);
+$shadow-inset: 0 2px 5px 3px rgba(127, 133, 139, 0.1) inset;
+
+/** Border Radius */
+
+$border-radius: 5px;
+
+/** Margins */
+
+$margin-regular: 20px;
+$margin-double: $margin-regular * 2;
+$margin-half: $margin-regular / 2;
+$margin-quart: $margin-regular / 4;

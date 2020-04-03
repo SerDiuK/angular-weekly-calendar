@@ -1,0 +1,35 @@
+{
+  "calendar-events": [
+    {
+      "id": 1,
+      "title": "Work on technical task",
+      "startDate": "2020-04-02 18:00:00",
+      "endDate": "2020-04-02 20:00:00",
+      "userId": 1
+    },
+    {
+      "title": "Continue working on technical task",
+      "startTime": "2020-04-03 14:00:00",
+      "endTime": "2020-04-03 18:00:00",
+      "id": 2,
+      "userId": 1
+    },
+    {
+      "title": "Having dinner",
+      "startTime": "2020-04-03 19:00:00",
+      "endTime": "2020-04-03 20:00:00",
+      "id": 2,
+      "userId": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Barry"
+    },
+    {
+      "id": 2,
+      "name": "Bob"
+    }
+  ]
+}

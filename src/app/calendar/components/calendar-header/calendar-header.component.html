@@ -1,0 +1,8 @@
+<div class="calendar-header-container">
+  <div class="datepicker">
+    <input class="invisible" matInput [matDatepicker]="picker" [ngModel]="chosenDate$ | async" (ngModelChange)="updateChosenDate($event)">
+    <mat-datepicker-toggle class="invisible" matSuffix [for]="picker"></mat-datepicker-toggle>
+    <button class="button button-primary" (click)="picker.open()">{{ (chosenDate$ | async).toDate() | date }}</button>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+</div>
