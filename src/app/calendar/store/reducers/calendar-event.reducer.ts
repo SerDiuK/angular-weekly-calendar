@@ -12,6 +12,9 @@ export const initialState: State = adapter.getInitialState({});
 const calendarEventReducer = createReducer(
   initialState,
   on(CalendarEventActions.addCalendarEventSuccess, (state, action) => adapter.addOne(action.calendarEvent, state)),
+  on(CalendarEventActions.updateCalendarEventSuccess, (state, action) =>
+    adapter.upsertOne(action.calendarEvent, state)
+  ),
   on(CalendarEventActions.deleteCalendarEventSuccess, (state, action) => adapter.removeOne(action.id, state)),
   on(CalendarEventActions.getCalendarEventsSuccess, (state, action) => adapter.setAll(action.calendarEvents, state))
 );

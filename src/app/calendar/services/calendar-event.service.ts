@@ -21,7 +21,7 @@ export class CalendarEventService {
   }
 
   updateCalendarEvent(body: CalendarEvent): Observable<CalendarEvent> {
-    return this.http.put<CalendarEvent>(this.baseUrl, body);
+    return this.http.put<CalendarEvent>(`${this.baseUrl}/${body.id}`, body);
   }
 
   deleteCalendarEvent(id: number): Observable<{}> {

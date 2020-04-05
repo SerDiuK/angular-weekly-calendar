@@ -2,18 +2,36 @@
   <app-calendar-header></app-calendar-header>
   <div class="calendar">
     <div class="weekdays">
-      <div class="weekday" *ngFor="let weekday of weekdays; index as i;">
+      <div class="weekday" *ngFor="let day of weekdays$ | async; index as i;">
         <div class="weekday-title">
-          <div>{{ weekday }}</div>
-          <div #dateEl>{{ chosenDate$ | async | calculateDate:i }}</div>
+          <div class="weekday-label">{{ day.weekday }}</div>
+          <div class="weekday-day">{{ day.date | date:'d' }}</div>
         </div>
-        <div class="hour" *ngFor="let hour of hoursInDay" (click)="createNewEvent(dateEl.innerText, hour)">
-          <span>{{ hour }}:00</span>
-          <div class="event">
-            {{ dateHasEvent(dateEl.innerText, hour) }}
+
+        <div class="hours">
+          <div class="events">
+            <div class="event" *ngFor="let event of day.events"
+                 [ngStyle]="calculateEventPosition(event)" (click)="openUpdateEvent(event)">
+              <div>{{ event.title }}</div>
+              <div>{{ event.startDate | date:'HH:mm' }} - {{ event.endDate | date:'HH:mm' }}</div>
+            </div>
+          </div>
+
+          <div class="hour" *ngFor="let hour of hoursInDay" (click)="openNewEvent(day.date, hour)">
+            <span *ngIf="i === 0 && hour > 0">{{ hour }}:00</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<p-dialog [(visible)]="showNewEventDialog" [modal]="true" header="Create event">
+  <app-calendar-event-dialog (dialogClose)="showNewEventDialog = false" *ngIf="newEventDate && showNewEventDialog"
+                             [newEventDate]="newEventDate"></app-calendar-event-dialog>
+</p-dialog>
+
+<p-dialog [(visible)]="showUpdateEventDialog" [modal]="true" header="Update event">
+  <app-calendar-event-dialog (dialogClose)="showUpdateEventDialog = false" *ngIf="showUpdateEventDialog && calendarEventToUpdate"
+                             [calendarEventToUpdate]="calendarEventToUpdate"></app-calendar-event-dialog>
+</p-dialog>

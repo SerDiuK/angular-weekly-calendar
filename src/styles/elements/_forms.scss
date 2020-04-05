@@ -1,0 +1,119 @@
+.form-control {
+  margin-bottom: $margin-regular;
+
+  &.form-control-inline {
+    label {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
+
+      input[type="text"] {
+        min-width: 50%;
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+
+    > span {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: $margin-quart;
+    }
+  }
+
+  input[type="text"], textarea {
+    border-radius: $border-radius;
+    border: 1px solid $grey-400;
+    padding: $margin-half;
+    color: $grey-700;
+    font-size: 14px;
+
+    &:active, &:focus {
+      outline: none;
+      border-color: $grey-600;
+      box-shadow: $shadow-inset;
+    }
+
+    &:hover {
+      border-color: $grey;
+    }
+  }
+
+  input[type="text"] {
+    height: 36px;
+  }
+
+  textarea {
+    min-height: 160px
+  }
+
+  .error-display {
+    color: $danger;
+    font-size: 12px;
+    font-weight: $weight-bold;
+    margin-top: $margin-quart;
+    display: none;
+  }
+
+  &.has-errors {
+    label span {
+      color: $danger;
+    }
+
+    input[type="text"], textarea {
+      border-color: $danger;
+    }
+
+    .error-display {
+      display: block;
+    }
+  }
+}
+
+/* overwrite primeng elements */
+
+.ui-dropdown, .ui-calendar input {
+  border-radius: $border-radius !important;
+  border: 1px solid $grey-400 !important;
+  color: $grey-700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  height: 36px;
+
+  .ui-dropdown-label-container, .ui-dropdown-label {
+    width: 100%;
+  }
+
+  &.ui-state-focus, &:focus {
+    outline: none !important;
+    border-color: $grey-600 !important;
+    box-shadow: $shadow-inset !important;
+  }
+
+  &.ui-state-hover, &:hover {
+    border-color: $grey !important;
+  }
+}
+
+.form-control {
+  .ui-dropdown {
+    width: 100%;
+  }
+
+  &.has-errors {
+    .ui-dropdown, .ui-calendar input {
+      border-color: $danger !important;
+    }
+  }
+}

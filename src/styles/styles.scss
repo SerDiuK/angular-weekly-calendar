@@ -1,7 +1,12 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
 @import "helpers/variables";
 @import "helpers/classes";
 
 @import "base/minireset";
 @import "base/base";
+
+@import "../../node_modules/primeicons/primeicons.css";
+@import "../../node_modules/primeng/resources/themes/nova-light/theme.css";
+@import "../../node_modules/primeng/resources/primeng.min.css";
+
+@import "elements/buttons";
+@import "elements/forms";

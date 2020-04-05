@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AppState } from '@app-state';
 import { User } from '@calendar/model/user';
-import { selectChosenDate, selectUsers } from '@calendar/store';
-import { updateChosenDate } from '@calendar/store/actions/ui.actions';
-import { getUsers } from '@calendar/store/actions/user.actions';
+import { selectSelectedDate, selectSelectedUser, selectUsers } from '@calendar/store';
+import { updateSelectedDate } from '@calendar/store/actions/ui.actions';
+import { getUsers, updateSelectedUser } from '@calendar/store/actions/user.actions';
 import { Store } from '@ngrx/store';
 import { Moment } from 'moment';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-header',
@@ -15,7 +16,8 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarHeaderComponent implements OnInit {
-  chosenDate$: Observable<Moment> = this.store.select(selectChosenDate);
+  selectedDate$: Observable<Moment> = this.store.select(selectSelectedDate);
+  selectedUserId$: Observable<User> = this.store.select(selectSelectedUser);
   users$: Observable<User[]> = this.store.select(selectUsers);
 
   constructor(private readonly store: Store<AppState>) {}
@@ -24,7 +26,11 @@ export class CalendarHeaderComponent implements OnInit {
     this.store.dispatch(getUsers());
   }
 
-  updateChosenDate(chosenDate: Moment): void {
-    this.store.dispatch(updateChosenDate({ chosenDate }));
+  updateSelectedDate(selectedDate: Moment): void {
+    this.store.dispatch(updateSelectedDate({ selectedDate: moment(selectedDate) }));
+  }
+
+  updateSelectedUser(selectedUser: User): void {
+    this.store.dispatch(updateSelectedUser({ selectedUser }));
   }
 }

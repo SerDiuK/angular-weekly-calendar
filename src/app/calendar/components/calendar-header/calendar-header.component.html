@@ -1,8 +1,13 @@
 <div class="calendar-header-container">
   <div class="datepicker">
-    <input class="invisible" matInput [matDatepicker]="picker" [ngModel]="chosenDate$ | async" (ngModelChange)="updateChosenDate($event)">
-    <mat-datepicker-toggle class="invisible" matSuffix [for]="picker"></mat-datepicker-toggle>
-    <button class="button button-primary" (click)="picker.open()">{{ (chosenDate$ | async).toDate() | date }}</button>
-    <mat-datepicker #picker></mat-datepicker>
+    <p-calendar [ngModel]="(selectedDate$ | async).toDate()" (ngModelChange)="updateSelectedDate($event)"></p-calendar>
   </div>
+  <div class="user-dropdown">
+    <p-dropdown [options]="users$ | async" optionLabel="name" [ngModel]="selectedUserId$ | async"
+                placeholder="Select User..."  [showClear]="true"
+                (ngModelChange)="updateSelectedUser($event)"></p-dropdown>
+  </div>
+  <h3 class="header-title">
+    Calendar App
+  </h3>
 </div>

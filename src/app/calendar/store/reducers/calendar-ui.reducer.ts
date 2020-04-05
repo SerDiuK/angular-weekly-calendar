@@ -1,19 +1,19 @@
-import { updateChosenDate } from '@calendar/store/actions/ui.actions';
+import { updateSelectedDate } from '@calendar/store/actions/ui.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 
 export interface State {
-  chosenDate: Moment;
+  selectedDate: Moment;
 }
 
 export const initialState: State = {
-  chosenDate: moment(),
+  selectedDate: moment(),
 };
 
 const uiReducer = createReducer(
   initialState,
-  on(updateChosenDate, (state, action) => ({ ...state, chosenDate: action.chosenDate }))
+  on(updateSelectedDate, (state, action) => ({ ...state, selectedDate: action.selectedDate }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

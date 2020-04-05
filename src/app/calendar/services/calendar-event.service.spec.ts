@@ -8,8 +8,8 @@ import { of } from 'rxjs';
 import { CalendarEventService } from './calendar-event.service';
 
 export const calendarEventsMock: CalendarEvent[] = [
-  { id: 1, title: 'Testing the title', startTime: '2020-04-02 18:00:00', endTime: '2020-04-02 20:00:00', userId: 1 },
-  { id: 2, title: 'Testing the time', startTime: '2020-04-03 14:00:00', endTime: '2020-04-03 18:00:00', userId: 1 },
+  { id: 1, title: 'Testing the title', startDate: '2020-04-02 18:00:00', endDate: '2020-04-02 20:00:00', userId: 1 },
+  { id: 2, title: 'Testing the time', startDate: '2020-04-03 14:00:00', endDate: '2020-04-03 18:00:00', userId: 1 },
 ];
 
 describe('CalendarEventService', () => {

@@ -19,9 +19,11 @@ $green: #69AF23;
 $fluorescent-orange: #FFC300;
 
 $primary: $arsenic;
+$primary-hover: lighten($arsenic, 10%);
 $success: $green;
 $warning: $fluorescent-orange;
 $danger: $madder-lake;
+$danger-hover: lighten($madder-lake, 10%);
 
 /** Fonts */
 
@@ -36,6 +38,7 @@ $weight-bold: 700 !default;
 /** Shadows */
 
 $shadow-light: 0 2px 16px 2px rgba(127, 133, 139, 0.12);
+$shadow-medium: 0 5px 8px 0 rgba(56, 62, 68, 0.13);
 $shadow-heavy: 0 9px 46px 8px rgba(0, 0, 0, 0.06), 0 24px 38px 3px rgba(0, 0, 0, 0.06), 0 11px 15px -7px rgba(0, 0, 0, 0.1);
 $shadow-inset: 0 2px 5px 3px rgba(127, 133, 139, 0.1) inset;
 

@@ -1,45 +1,60 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AppState } from '@app-state';
 import { backendDateTimeFormat } from '@calendar/config/calendar.config';
 import { CalendarEvent } from '@calendar/model/calendar-event';
-import { selectCalendarEvents, selectChosenDate } from '@calendar/store';
+import { WeekdayWithEvents } from '@calendar/model/weekday-with-events';
+import { selectWeekdaysWithEvents } from '@calendar/store';
 import { getCalendarEvents } from '@calendar/store/actions/calendar-event.actions';
 import { Store } from '@ngrx/store';
-import { Moment } from 'moment';
 import * as moment from 'moment';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalendarComponent implements OnInit, OnDestroy {
-  calendarEvents: CalendarEvent[];
-  chosenDate$: Observable<Moment> = this.store.select(selectChosenDate);
-  weekdays: string[] = moment.weekdaysMin(true);
+export class CalendarComponent implements OnInit {
+  weekdays$: Observable<WeekdayWithEvents[]> = this.store.select(selectWeekdaysWithEvents);
   hoursInDay: number[] = Array.from(Array(24).keys());
-  sub: Subscription;
+  showNewEventDialog: boolean;
+  showUpdateEventDialog: boolean;
+  newEventDate: Date;
+  calendarEventToUpdate: CalendarEvent;
 
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(getCalendarEvents());
-
-    this.sub = this.store
-      .select(selectCalendarEvents)
-      .subscribe((calendarEvents) => (this.calendarEvents = calendarEvents));
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  calculateEventPosition(calendarEvent: CalendarEvent): { top: string; height: string } {
+    const startOfDayUnix = moment(calendarEvent.startDate, backendDateTimeFormat).set('h', 0).set('m', 0).unix();
+    const endOfDayUnix = moment(calendarEvent.startDate, backendDateTimeFormat).set('h', 23).set('m', 59).unix();
+    const differenceDay = endOfDayUnix - startOfDayUnix;
+
+    const startOfEventUnix = Math.max(moment(calendarEvent.startDate, backendDateTimeFormat).unix(), startOfDayUnix);
+    const endOfEventUnix = Math.min(moment(calendarEvent.endDate, backendDateTimeFormat).unix(), endOfDayUnix);
+
+    const differenceStartOfEvent = startOfEventUnix - startOfDayUnix;
+    const differenceEndOfEvent = endOfEventUnix - startOfDayUnix;
+
+    const top = (differenceStartOfEvent / differenceDay) * 100;
+    const height = ((differenceEndOfEvent - differenceStartOfEvent) / differenceDay) * 100;
+
+    return {
+      height: height + '%',
+      top: top + '%',
+    };
   }
 
-  createNewEvent(day: string, time: number): void {}
+  openNewEvent(newEventDate: Date, hour: number) {
+    this.newEventDate = moment(newEventDate).set('hour', hour).set('minute', 0).toDate();
+    this.showNewEventDialog = true;
+  }
 
-  dateHasEvent(day: string, time: number): CalendarEvent[] {
-    return this.calendarEvents.filter((event) => {
-      return moment(event.startTime, backendDateTimeFormat);
-    });
+  openUpdateEvent(event: CalendarEvent) {
+    this.calendarEventToUpdate = event;
+    this.showUpdateEventDialog = true;
   }
 }

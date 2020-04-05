@@ -1,0 +1,21 @@
+@import "variables";
+
+.calendar-event-dialog-container {
+  margin-top: $margin-half;
+
+  .action-buttons {
+    display: flex;
+
+    button {
+      margin-right: $margin-quart;
+    }
+  }
+
+  .timepickers {
+    display: flex;
+
+    .form-control:first-child {
+      margin-right: $margin-half;
+    }
+  }
+}

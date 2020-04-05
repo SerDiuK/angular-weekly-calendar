@@ -1,0 +1,59 @@
+.button {
+  min-width: 60px;
+  border-radius: $border-radius;
+  padding: 0 $margin-regular;
+  outline: none;
+  height: 36px;
+  display: inline-flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $shadow-light;
+  background-position: center;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+
+  &.button-small {
+    height: 24px;
+    font-size: 12px;
+    min-width: 48px;
+  }
+
+  &.button-flat {
+    border: 1px solid $primary;
+
+    &:hover {
+      background: $grey-300;
+    }
+  }
+
+
+  &.button-primary {
+    background: $primary;
+    color: $white;
+
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  &.button-success {
+    background: $success;
+    color: $white;
+  }
+
+  &.button-warning {
+    background: $warning;
+    color: $white;
+  }
+
+  &.button-danger {
+    background: $danger;
+    color: $white;
+
+    &:hover {
+      background: $danger-hover;
+    }
+  }
+}

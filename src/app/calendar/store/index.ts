@@ -2,6 +2,7 @@ import { AppStateFeatures } from '@app-state';
 import * as fromCalendarEvents from '@calendar/store/reducers/calendar-event.reducer';
 import * as fromUsers from '@calendar/store/reducers/user.reducer';
 import * as fromUi from '@calendar/store/reducers/calendar-ui.reducer';
+import { CalendarUtils } from '@calendar/utils/calendar.utils';
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface State {
@@ -28,6 +29,17 @@ export const selectCalendarEvents = createSelector(selectCalendarState, (state) 
 
 export const selectUsers = createSelector(selectCalendarState, (state) => fromUsers.selectAll(state.users));
 
+export const selectSelectedUser = createSelector(selectCalendarState, (state) => state.users.selectedUser);
+
 /* Calendar Ui */
 
-export const selectChosenDate = createSelector(selectCalendarState, (state) => state.calendarUi.chosenDate);
+export const selectSelectedDate = createSelector(selectCalendarState, (state) => state.calendarUi.selectedDate);
+
+export const selectWeekdays = createSelector(selectSelectedDate, CalendarUtils.mapWeekdays);
+
+export const selectWeekdaysWithEvents = createSelector(
+  selectWeekdays,
+  selectCalendarEvents,
+  selectSelectedUser,
+  CalendarUtils.groupsWeekdaysAndEvents
+);
