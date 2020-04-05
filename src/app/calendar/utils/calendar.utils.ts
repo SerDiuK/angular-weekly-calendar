@@ -2,11 +2,10 @@ import { backendDateTimeFormat } from '@calendar/config/calendar.config';
 import { CalendarEvent } from '@calendar/model/calendar-event';
 import { User } from '@calendar/model/user';
 import { WeekdayWithEvents } from '@calendar/model/weekday-with-events';
-import { Moment } from 'moment';
 import * as moment from 'moment';
 
 export class CalendarUtils {
-  static groupsWeekdaysAndEvents(
+  static groupsWeekdaysAndEventsBySelectedUser(
     weekdays: WeekdayWithEvents[],
     calendarEvents: CalendarEvent[],
     selectedUser: User
@@ -25,10 +24,10 @@ export class CalendarUtils {
     });
   }
 
-  static mapWeekdays(selectedDate: Moment): WeekdayWithEvents[] {
+  static mapWeekdays(selectedDate: Date): WeekdayWithEvents[] {
     return moment.weekdaysMin().map((weekday, weekdayIndex) => {
       const mappedDate = moment(selectedDate);
-      const selectedDateDayInWeek = selectedDate.weekday() + 1;
+      const selectedDateDayInWeek = moment(selectedDate).weekday() - 1; // Sets it to Monday instead of Sunday
       const differenceIndexSelectedDate = weekdayIndex - selectedDateDayInWeek;
 
       if (differenceIndexSelectedDate > 0) {
@@ -37,7 +36,7 @@ export class CalendarUtils {
         mappedDate.subtract(-differenceIndexSelectedDate, 'days').toDate();
       }
 
-      return { weekday, date: mappedDate.toDate(), events: [] };
+      return { date: mappedDate.toDate(), events: [] };
     });
   }
 }

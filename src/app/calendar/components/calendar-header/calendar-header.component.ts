@@ -5,9 +5,7 @@ import { selectSelectedDate, selectSelectedUser, selectUsers } from '@calendar/s
 import { updateSelectedDate } from '@calendar/store/actions/ui.actions';
 import { getUsers, updateSelectedUser } from '@calendar/store/actions/user.actions';
 import { Store } from '@ngrx/store';
-import { Moment } from 'moment';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar-header',
@@ -16,7 +14,7 @@ import * as moment from 'moment';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarHeaderComponent implements OnInit {
-  selectedDate$: Observable<Moment> = this.store.select(selectSelectedDate);
+  selectedDate$: Observable<Date> = this.store.select(selectSelectedDate);
   selectedUserId$: Observable<User> = this.store.select(selectSelectedUser);
   users$: Observable<User[]> = this.store.select(selectUsers);
 
@@ -26,8 +24,8 @@ export class CalendarHeaderComponent implements OnInit {
     this.store.dispatch(getUsers());
   }
 
-  updateSelectedDate(selectedDate: Moment): void {
-    this.store.dispatch(updateSelectedDate({ selectedDate: moment(selectedDate) }));
+  updateSelectedDate(selectedDate: Date): void {
+    this.store.dispatch(updateSelectedDate({ selectedDate }));
   }
 
   updateSelectedUser(selectedUser: User): void {

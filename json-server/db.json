@@ -2,30 +2,15 @@
   "calendar-events": [
     {
       "id": 2,
-      "startDate": "2020-04-07 14:00",
+      "startDate": "2020-04-07 16:00",
       "endDate": "2020-04-07 20:00",
-      "title": "Continue working on technical task",
-      "userId": 1
+      "title": "Continue working on technical task"
     },
     {
       "title": "Having dinner",
       "startDate": "2020-04-06 19:00",
       "endDate": "2020-04-06 20:00",
       "id": 3,
-      "userId": 2
-    },
-    {
-      "id": 4,
-      "startDate": "2020-04-08 12:30",
-      "endDate": "2020-04-08 18:31",
-      "title": "YAYAYA",
-      "userId": 1
-    },
-    {
-      "id": 5,
-      "startDate": "2020-04-13 08:00",
-      "endDate": "2020-04-13 09:00",
-      "title": "Something else huh",
       "userId": 2
     }
   ],

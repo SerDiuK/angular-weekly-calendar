@@ -1,14 +1,12 @@
 import { updateSelectedDate } from '@calendar/store/actions/ui.actions';
 import { Action, createReducer, on } from '@ngrx/store';
-import { Moment } from 'moment';
-import * as moment from 'moment';
 
 export interface State {
-  selectedDate: Moment;
+  selectedDate: Date;
 }
 
 export const initialState: State = {
-  selectedDate: moment(),
+  selectedDate: new Date(),
 };
 
 const uiReducer = createReducer(

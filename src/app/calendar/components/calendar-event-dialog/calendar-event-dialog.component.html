@@ -1,12 +1,12 @@
 <div class="calendar-event-dialog-container">
   <form [formGroup]="form">
-    <div class="form-control" [ngClass]="{'has-errors': form.controls.title.errors && submitted}">
+    <div class="form-control" [ngClass]="{'has-errors': form.controls.title?.errors && submitted}">
       <label>
         <span>Title</span>
         <input type="text" formControlName="title">
       </label>
-      <div class="error-display" *ngIf="form.controls.title.errors">
-        <span *ngIf="form.controls.title.errors?.required">
+      <div class="error-display" *ngIf="form.controls.title?.errors">
+        <span *ngIf="form.controls.title?.errors?.required">
           This field is mandatory
         </span>
       </div>
@@ -14,25 +14,25 @@
     </div>
 
     <div class="timepickers">
-      <div class="form-control" [ngClass]="{'has-errors': form.controls.startDate.errors && submitted}">
+      <div class="form-control" [ngClass]="{'has-errors': form.controls.startDate?.errors && submitted}">
         <label>
           <span>Start time</span>
-          <p-calendar [timeOnly]="true" formControlName="startDate"></p-calendar>
+          <p-calendar [maxDate]="form.value.endDate" [timeOnly]="true" formControlName="startDate"></p-calendar>
         </label>
-        <div class="error-display" *ngIf="form.controls.startDate.errors">
-          <span *ngIf="form.controls.startDate.errors?.required">
+        <div class="error-display" *ngIf="form.controls.startDate?.errors">
+          <span *ngIf="form.controls.startDate?.errors?.required">
             This field is mandatory
           </span>
         </div>
       </div>
 
-      <div class="form-control" [ngClass]="{'has-errors': form.controls.endDate.errors && submitted }">
+      <div class="form-control" [ngClass]="{'has-errors': form.controls.endDate?.errors && submitted }">
         <label>
           <span>End time</span>
-          <p-calendar [timeOnly]="true" formControlName="endDate"></p-calendar>
+          <p-calendar [minDate]="form.value.startDate" [timeOnly]="true" formControlName="endDate"></p-calendar>
         </label>
-        <div class="error-display" *ngIf="form.controls.endDate.errors">
-          <span *ngIf="form.controls.endDate.errors?.required">
+        <div class="error-display" *ngIf="form.controls.endDate?.errors">
+          <span *ngIf="form.controls.endDate?.errors?.required">
             This field is mandatory
           </span>
         </div>
@@ -40,15 +40,15 @@
     </div>
 
 
-    <div class="form-control" [ngClass]="{'has-errors': form.controls.user.errors && submitted }">
+    <div class="form-control" [ngClass]="{'has-errors': form.controls.user?.errors && submitted }">
       <label>
         <span>User</span>
         <p-dropdown [options]="users$ | async" appendTo="body"
                     placeholder="Select User..." [showClear]="true"
-                    formControlName="user"></p-dropdown>
+                    formControlName="userId"></p-dropdown>
       </label>
-      <div class="error-display" *ngIf="form.controls.user.errors">
-        <span *ngIf="form.controls.user.errors?.required">
+      <div class="error-display" *ngIf="form.controls.user?.errors">
+        <span *ngIf="form.controls.user?.errors?.required">
           This field is mandatory
         </span>
       </div>

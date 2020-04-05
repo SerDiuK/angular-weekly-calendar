@@ -107,17 +107,17 @@ describe('CalendarEventEffects', () => {
     expect(effects.onUpdateCalendarEvent$).toBeObservable(expected);
   });
 
-  it('should return addCalendarEventFailed when creating a calendarEvent is unsuccessful', () => {
-    spyOn(service, 'addCalendarEvent').and.returnValue(throwError(new Error('error')));
+  it('should return updateCalendarEventFailed when updating a calendarEvent is unsuccessful', () => {
+    spyOn(service, 'updateCalendarEvent').and.returnValue(throwError(new Error('error')));
 
     actions$ = hot('-a-', {
-      a: CalendarEventActions.addCalendarEvent({ calendarEvent: calendarEventsMock[0] }),
+      a: CalendarEventActions.updateCalendarEvent({ calendarEvent: calendarEventsMock[0] }),
     });
     const expected = cold('-b-', {
-      b: CalendarEventActions.addCalendarEventFailed({ error: new Error('error') as HttpErrorResponse }),
+      b: CalendarEventActions.updateCalendarEventFailed({ error: new Error('error') as HttpErrorResponse }),
     });
 
-    expect(effects.onAddCalendarEvent$).toBeObservable(expected);
+    expect(effects.onUpdateCalendarEvent$).toBeObservable(expected);
   });
 
   it('should return deleteCalendarEventSuccess when deleting a calendarEvent is successful', () => {

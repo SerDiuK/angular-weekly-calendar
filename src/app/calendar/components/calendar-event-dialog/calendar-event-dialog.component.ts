@@ -50,7 +50,7 @@ export class CalendarEventDialogComponent implements OnInit {
         startDate: moment(this.form.value.startDate).format(backendDateTimeFormat),
         endDate: moment(this.form.value.endDate).format(backendDateTimeFormat),
         title: this.form.value.title,
-        userId: this.form.value.user.id,
+        userId: this.form.value.userId,
       };
 
       if (this.calendarEventToUpdate) {
@@ -77,7 +77,7 @@ export class CalendarEventDialogComponent implements OnInit {
       title: new FormControl(this.calendarEventToUpdate?.title, Validators.required),
       startDate: new FormControl(this.getStartDateDefaultValue.call(this), Validators.required),
       endDate: new FormControl(this.getEndDateDefaultValue.call(this), Validators.required),
-      user: new FormControl(this.calendarEventToUpdate?.userId, Validators.required),
+      userId: new FormControl(this.calendarEventToUpdate?.userId, Validators.required),
     });
   }
 

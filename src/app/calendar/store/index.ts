@@ -41,5 +41,5 @@ export const selectWeekdaysWithEvents = createSelector(
   selectWeekdays,
   selectCalendarEvents,
   selectSelectedUser,
-  CalendarUtils.groupsWeekdaysAndEvents
+  CalendarUtils.groupsWeekdaysAndEventsBySelectedUser
 );

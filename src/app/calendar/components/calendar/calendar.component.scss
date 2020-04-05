@@ -61,7 +61,7 @@
               position: absolute;
               background: $primary;
               width: 80%;
-              left: $margin-regular;
+              left: $margin-double;
               color: white;
               box-shadow: $shadow-heavy;
               border-radius: 5px;
@@ -70,6 +70,11 @@
               font-size: 10px;
               overflow: hidden;
               cursor: pointer;
+
+              .event-title {
+                font-weight: $weight-bold;
+                font-size: 11px;
+              }
 
               &:hover  {
                 background: $primary-hover;

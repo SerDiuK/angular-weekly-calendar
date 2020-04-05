@@ -43,8 +43,8 @@ export class CalendarComponent implements OnInit {
     const height = ((differenceEndOfEvent - differenceStartOfEvent) / differenceDay) * 100;
 
     return {
-      height: height + '%',
-      top: top + '%',
+      height: height.toFixed(4) + '%',
+      top: top.toFixed(4) + '%',
     };
   }
 

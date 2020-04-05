@@ -1,6 +1,6 @@
 <div class="calendar-header-container">
   <div class="datepicker">
-    <p-calendar [ngModel]="(selectedDate$ | async).toDate()" (ngModelChange)="updateSelectedDate($event)"></p-calendar>
+    <p-calendar [ngModel]="selectedDate$ | async" (ngModelChange)="updateSelectedDate($event)"></p-calendar>
   </div>
   <div class="user-dropdown">
     <p-dropdown [options]="users$ | async" optionLabel="name" [ngModel]="selectedUserId$ | async"
