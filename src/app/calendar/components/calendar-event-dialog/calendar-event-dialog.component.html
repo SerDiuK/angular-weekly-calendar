@@ -40,15 +40,15 @@
     </div>
 
 
-    <div class="form-control" [ngClass]="{'has-errors': form.controls.user?.errors && submitted }">
+    <div class="form-control" [ngClass]="{'has-errors': form.controls.userId?.errors && submitted }">
       <label>
         <span>User</span>
         <p-dropdown [options]="users$ | async" appendTo="body"
                     placeholder="Select User..." [showClear]="true"
                     formControlName="userId"></p-dropdown>
       </label>
-      <div class="error-display" *ngIf="form.controls.user?.errors">
-        <span *ngIf="form.controls.user?.errors?.required">
+      <div class="error-display" *ngIf="form.controls.userId?.errors">
+        <span *ngIf="form.controls.userId?.errors?.required">
           This field is mandatory
         </span>
       </div>

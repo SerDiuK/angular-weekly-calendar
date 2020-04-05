@@ -2,9 +2,10 @@
   "calendar-events": [
     {
       "id": 2,
-      "startDate": "2020-04-07 16:00",
+      "startDate": "2020-04-07 17:00",
       "endDate": "2020-04-07 20:00",
-      "title": "Continue working on technical task"
+      "title": "Continue working on technical task",
+      "userId": 2
     },
     {
       "title": "Having dinner",

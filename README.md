@@ -27,3 +27,7 @@ The application is fully tested. The tests can be run using:
 ```
 ng test
 ```
+
+## Known issues
+
+* The application is not responsive and will likely break in any resolution under 1920x1080.
