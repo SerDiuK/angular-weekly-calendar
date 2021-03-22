@@ -1,0 +1,11 @@
+---
+application:
+  name: "marktperspectief-front"
+  project: "test-project"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-marktperspectief-front"
+  routes:
+  - application_name: "marktperspectief-front"
+    paths:
+    - "/*"
