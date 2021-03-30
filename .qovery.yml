@@ -1,11 +1,11 @@
 ---
 application:
-  name: "marktperspectief-front"
-  project: "test-project"
-  organization: "QoveryCommunity"
+  name: "angular-weekly-calendar"
+  project: "test-front"
+  organization: "Jobs@Risk"
 routers:
-- name: "main-marktperspectief-front"
+- name: "main-angular-weekly-calendar"
   routes:
-  - application_name: "marktperspectief-front"
+  - application_name: "angular-weekly-calendar"
     paths:
     - "/*"
