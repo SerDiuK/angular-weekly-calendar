@@ -1,8 +1,8 @@
 ---
 application:
   name: "angular-weekly-calendar"
-  project: "test-front"
-  organization: "Jobs@Risk"
+  project: "test-angular-calendar"
+  organization: "QoveryCommunity"
 routers:
 - name: "main-angular-weekly-calendar"
   routes:
